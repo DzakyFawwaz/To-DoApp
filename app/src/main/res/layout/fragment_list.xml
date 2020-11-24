@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="mSharedViewModel"
+            type="com.jaki.example.to_doapp.fragments.SharedViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/list_layout"
+        tools:context=".fragments.list.ListFragment">
+
+        <!-- TODO: Update blank fragment layout -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_todo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:listitem="@layout/row_layout" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab"
+            android:navigateToAddFragment="@{true}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:src="@drawable/ic_add"
+            android:backgroundTint="@color/purple_500"
+            android:tint="@color/white"
+            android:layout_marginBottom="10dp"
+            android:layout_marginEnd="10dp"/>
+
+        <ImageView
+            android:emptyDatabase="@{mSharedViewModel.emptyDatabase}"
+            android:visibility="invisible"
+            android:id="@+id/img_no_data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/box"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/rv_todo" />
+
+        <TextView
+            android:emptyDatabase="@{mSharedViewModel.emptyDatabase}"
+            android:id="@+id/tv_no_data"
+            android:visibility="invisible"
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No Data"
+            app:layout_constraintEnd_toEndOf="@+id/img_no_data"
+            app:layout_constraintHorizontal_bias="0.428"
+            app:layout_constraintStart_toStartOf="@+id/img_no_data"
+            app:layout_constraintTop_toBottomOf="@+id/img_no_data" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
